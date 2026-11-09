@@ -1,1 +1,320 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna — Votre guide intuitif</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0c0c0e; --bg-card:#161618; --text:#f4f1ea; --text-muted:#a39e94; --cream:#f0e6d3; --border:rgba(240,230,211,0.12); }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+h1,h2,h3,.serif { font-family:'Instrument Serif',serif; font-weight:400; }
+a { color:inherit; text-decoration:none; }
+.screen { display:none; min-height:100vh; animation:fadeIn 0.3s ease; }
+.screen.active { display:block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+header { position:sticky; top:0; z-index:50; background:rgba(12,12,14,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; }
+.logo { display:flex; align-items:center; gap:0.5rem; font-family:'Instrument Serif',serif; font-size:1.3rem; cursor:pointer; }
+.logo img { width:26px; height:26px; object-fit:cover; border-radius:50%; }
+.nav-tabs { display:flex; gap:1rem; font-size:0.85rem; }
+.nav-tabs a { color:var(--text-muted); }
+.nav-tabs a:hover { color:var(--cream); }
+.container { max-width:520px; margin:0 auto; padding:0 1.25rem 4rem; }
+.btn { display:block; width:100%; padding:0.9rem 1.3rem; border-radius:999px; font-weight:500; text-align:center; margin-bottom:0.6rem; cursor:pointer; border:none; transition:transform 0.15s; }
+.btn:hover { transform:translateY(-1px); }
+.btn-primary { background:var(--cream); color:#1a1612; }
+.btn-secondary { background:transparent; border:1px solid var(--border); color:var(--text); }
+.psychic-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:1rem; margin-bottom:1rem; display:flex; gap:1rem; }
+.psychic-card img { width:72px; height:72px; border-radius:50%; object-fit:cover; }
+.psychic-card .info { flex:1; }
+.psychic-card .rating { color:var(--cream); font-size:0.85rem; }
+.reviews { margin-top:2rem; }
+.review { background:var(--bg-card); border-radius:12px; padding:1rem; margin-bottom:0.8rem; font-size:0.95rem; }
+.review .stars { color:var(--cream); margin-bottom:0.3rem; }
+.chat-window { background:var(--bg-card); border-radius:16px; padding:1rem; min-height:280px; margin:1rem 0; max-height:400px; overflow-y:auto; }
+.msg { margin:0.6rem 0; max-width:80%; padding:0.7rem 1rem; border-radius:12px; }
+.msg.user { background:var(--cream); color:#1a1612; margin-left:auto; }
+.msg.guide { background:#1e1e22; }
+.input-bar { display:flex; gap:0.5rem; margin-top:1rem; }
+.input-bar input { flex:1; background:var(--bg-card); border:1px solid var(--border); border-radius:999px; padding:0.75rem 1rem; color:var(--text); }
+.input-bar button { background:var(--cream); color:#1a1612; border:none; border-radius:50%; width:42px; height:42px; cursor:pointer; }
+.phone-ui { text-align:center; padding:2rem 0; }
+.phone-ui .avatar { width:100px; height:100px; border-radius:50%; margin:0 auto 1rem; object-fit:cover; }
+.form-group { margin-bottom:1rem; }
+.form-group label { display:block; margin-bottom:0.3rem; font-size:0.9rem; color:var(--text-muted); }
+.form-group input, .form-group textarea, .form-group select { width:100%; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:0.75rem; color:var(--text); }
+.success { background:rgba(240,230,211,0.1); border:1px solid var(--cream); border-radius:12px; padding:1rem; margin:1rem 0; text-align:center; }
+footer { text-align:center; padding:2rem 1rem; color:var(--text-muted); font-size:0.8rem; }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+</style>
+</head>
+<body>
+<div id="home" class="screen active">
+  <header>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <div class="nav-tabs">
+      <a href="#" onclick="show('guides')">Guides</a>
+      <a href="#" onclick="show('pricing')">Offres</a>
+      <a href="#" onclick="show('account')">Compte</a>
+    </div>
+  </header>
+  <div class="container">
+    <div style="text-align:center; padding:2.5rem 0 1.5rem;">
+      <div style="width:110px;height:110px;margin:0 auto 1.5rem;background:url('images/kvoyc.jpg') center/cover;border-radius:50%;animation:float 6s ease-in-out infinite;"></div>
+      <p style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Guidance 24h/24</p>
+      <h1 style="font-size:2.4rem;line-height:1.05;margin:1rem 0;">Une question vous tient éveillée ? <em style="color:var(--cream);">Posez-la à Luna.</em></h1>
+      <p style="color:var(--text-muted);margin-bottom:1.8rem;max-width:420px;margin-left:auto;margin-right:auto;">Chat, téléphone ou message. Guides IA et guides humains. Votre histoire vous suit.</p>
+      <button class="btn btn-primary" onclick="show('guides')">Choisir un guide</button>
+      <button class="btn btn-secondary" onclick="startChat('Séléné')">Essayer le chat gratuit</button>
+    </div>
+    <div class="reviews">
+      <h2 style="margin-bottom:1rem;font-size:1.6rem;">Avis clients</h2>
+      <div class="review"><div class="stars">★★★★★</div><p>« Séléné m’a vraiment aidée à y voir plus clair sur ma relation. Très à l’écoute. » — Camille</p></div>
+      <div class="review"><div class="stars">★★★★★</div><p>« Consultation téléphonique avec Marc, précis et bienveillant. Je recommande. » — Thomas</p></div>
+      <div class="review"><div class="stars">★★★★☆</div><p>« Le message de Claire était détaillé et utile. Parfait pour prendre du recul. » — Léa</p></div>
+    </div>
+  </div>
+  <footer>Service réservé aux majeurs · Transparence sur la nature des échanges · © 2026 Luna</footer>
+</div>
+
+<div id="guides" class="screen">
+  <header>
+    <span onclick="show('home')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.9rem;margin:1.2rem 0;">Nos guides</h1>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;">Guides IA et guides humains. Choisissez celui qui vous correspond.</p>
+    <div class="psychic-card">
+      <img src="images/a2fNm.jpg" alt="Séléné">
+      <div class="info">
+        <strong>Séléné</strong> <span style="font-size:0.8rem;color:var(--cream);">IA · Tarot</span>
+        <div class="rating">★ 4.9 · 12 400 échanges</div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin:0.4rem 0;">Ton doux, pose les cartes avec attention.</p>
+        <button class="btn btn-primary" style="width:auto;padding:0.5rem 1rem;font-size:0.85rem;" onclick="startChat('Séléné')">Chat</button>
+      </div>
+    </div>
+    <div class="psychic-card">
+      <img src="images/W9qq6.jpg" alt="Marc">
+      <div class="info">
+        <strong>Marc</strong> <span style="font-size:0.8rem;color:var(--cream);">Humain · Astro</span>
+        <div class="rating">★ 4.8 · 3 200 consultations</div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin:0.4rem 0;">Disponible en téléphone et message.</p>
+        <button class="btn btn-primary" style="width:auto;padding:0.5rem 1rem;font-size:0.85rem;" onclick="show('phone')">Appeler</button>
+      </div>
+    </div>
+    <div class="psychic-card">
+      <img src="images/mv9Jq.jpg" alt="Claire">
+      <div class="info">
+        <strong>Claire</strong> <span style="font-size:0.8rem;color:var(--cream);">Humain · Relations</span>
+        <div class="rating">★ 4.9 · 5 100 consultations</div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin:0.4rem 0;">Écoute et clarté sur les liens.</p>
+        <button class="btn btn-primary" style="width:auto;padding:0.5rem 1rem;font-size:0.85rem;" onclick="show('message')">Message</button>
+      </div>
+    </div>
+    <button class="btn btn-secondary" style="margin-top:1.5rem;" onclick="show('become')">Devenir guide sur Luna</button>
+  </div>
+</div>
+
+<div id="chat" class="screen">
+  <header>
+    <span onclick="show('guides')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span id="chat-guide">Séléné</span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.5rem;margin:1rem 0;" id="chat-title">Chat avec Séléné</h1>
+    <div class="chat-window" id="chat-window">
+      <div class="msg guide">Bonjour, je suis Séléné. Quelle question vous occupe en ce moment ?</div>
+    </div>
+    <div class="input-bar">
+      <input type="text" id="chat-input" placeholder="Écrire votre message..." onkeypress="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()">↑</button>
+    </div>
+  </div>
+</div>
+
+<div id="phone" class="screen">
+  <header>
+    <span onclick="show('guides')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container phone-ui">
+    <img class="avatar" src="images/W9qq6.jpg" alt="Marc">
+    <h1 style="font-size:1.6rem;">Marc</h1>
+    <p style="color:var(--text-muted);margin:0.5rem 0 1.5rem;">Consultation téléphonique · Disponible maintenant</p>
+    <button class="btn btn-primary" onclick="startCall()">Appeler maintenant</button>
+    <div id="call-status" style="margin-top:1rem;color:var(--cream);"></div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-top:1rem;">Tarif : à partir de 1,50 €/min après les premières minutes.</p>
+  </div>
+</div>
+
+<div id="message" class="screen">
+  <header>
+    <span onclick="show('guides')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.6rem;margin:1rem 0;">Message à Claire</h1>
+    <p style="color:var(--text-muted);margin-bottom:1rem;">Posez votre question. Vous recevrez une réponse écrite.</p>
+    <div class="form-group">
+      <label>Votre question</label>
+      <textarea id="msg-text" placeholder="Décrivez votre situation..."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="sendMessage()">Envoyer le message</button>
+    <div id="msg-success" class="success" style="display:none;">Message envoyé. Claire vous répondra sous 24h.</div>
+  </div>
+</div>
+
+<div id="become" class="screen">
+  <header>
+    <span onclick="show('guides')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.8rem;margin:1.2rem 0;">Devenir guide</h1>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;">Vous êtes voyant, tarologue ou astrologue ? Inscrivez-vous.</p>
+    <div class="form-group"><label>Nom / Pseudonyme</label><input type="text" id="g-name"></div>
+    <div class="form-group"><label>Spécialité</label><select id="g-spec"><option>Tarot</option><option>Astrologie</option><option>Numérologie</option><option>Médiumnité</option></select></div>
+    <div class="form-group"><label>Présentation</label><textarea id="g-bio"></textarea></div>
+    <button class="btn btn-primary" onclick="submitGuide()">Envoyer ma candidature</button>
+    <div id="g-success" class="success" style="display:none;">Candidature reçue. Nous vous contacterons après vérification.</div>
+  </div>
+</div>
+
+<div id="pricing" class="screen">
+  <header>
+    <span onclick="show('home')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.8rem;margin:1.2rem 0;">Offres</h1>
+    <div style="background:var(--cream);color:#1a1612;border-radius:16px;padding:1.5rem;margin:1rem 0;">
+      <h3>Luna+</h3>
+      <div style="font-size:2.2rem;font-family:'Instrument Serif',serif;">9,90 €/mois</div>
+      <p>Accès aux guides IA + réductions sur les consultations humaines.</p>
+      <button class="btn" style="background:#1a1612;color:var(--cream);margin-top:1rem;" onclick="goToPayment('Luna+', '9,90 €/mois')">Rejoindre</button>
+    </div>
+    <div style="background:var(--bg-card);border-radius:16px;padding:1.5rem;margin:1rem 0;">
+      <h3>À l’unité</h3>
+      <p>Découverte 9,90 € · Consultation 19,90 € · Pack 39,90 €</p>
+      <button class="btn btn-secondary" style="margin-top:1rem;" onclick="goToPayment('Découverte', '9,90 €')">Choisir</button>
+    </div>
+  </div>
+</div>
+
+<div id="payment" class="screen">
+  <header>
+    <span onclick="show('pricing')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.8rem;margin:1.2rem 0;">Paiement</h1>
+    <div style="background:var(--bg-card);border-radius:12px;padding:1rem;margin-bottom:1.5rem;">
+      <strong id="pay-item">Luna+</strong>
+      <div id="pay-price" style="font-size:1.4rem;color:var(--cream);margin-top:0.3rem;">9,90 €/mois</div>
+    </div>
+    <div class="form-group"><label>Numéro de carte</label><input type="text" placeholder="4242 4242 4242 4242" id="card-number"></div>
+    <div style="display:flex;gap:1rem;">
+      <div class="form-group" style="flex:1;"><label>Expiration</label><input type="text" placeholder="12/28" id="card-exp"></div>
+      <div class="form-group" style="flex:1;"><label>CVC</label><input type="text" placeholder="123" id="card-cvc"></div>
+    </div>
+    <div class="form-group"><label>Nom sur la carte</label><input type="text" placeholder="Jean Dupont" id="card-name"></div>
+    <button class="btn btn-primary" onclick="processPayment()">Payer maintenant</button>
+    <div id="pay-success" class="success" style="display:none;">Paiement réussi (simulation). Merci !</div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;text-align:center;">Paiement 100 % simulé. Aucune carte n’est débitée.</p>
+  </div>
+</div>
+
+<div id="account" class="screen">
+  <header>
+    <span onclick="show('home')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container">
+    <h1 style="font-size:1.8rem;margin:1.2rem 0;">Mon compte</h1>
+    <p style="color:var(--text-muted);">Connectez-vous ou créez un compte pour conserver votre historique.</p>
+    <div class="form-group" style="margin-top:1.5rem;"><label>Email</label><input type="email"></div>
+    <div class="form-group"><label>Mot de passe</label><input type="password"></div>
+    <button class="btn btn-primary" onclick="alert('Connexion simulée')">Se connecter</button>
+    <button class="btn btn-secondary" onclick="alert('Création de compte simulée')">Créer un compte</button>
+  </div>
+</div>
+
+<div id="legal" class="screen">
+  <header>
+    <span onclick="show('home')" style="cursor:pointer;font-size:1.4rem;">←</span>
+    <div class="logo" onclick="show('home')"><img src="images/kvoyc.jpg" alt=""> Luna</div>
+    <span></span>
+  </header>
+  <div class="container" style="font-size:0.9rem;color:var(--text-muted);">
+    <h1 style="font-size:1.6rem;margin:1.2rem 0;color:var(--text);">Mentions & Transparence</h1>
+    <p>Luna propose des lectures et des pistes de réflexion s’appuyant sur les codes du tarot et de l’astrologie. Les échanges sont générés de façon assistée ou réalisés avec des guides humains. Ils ne prétendent pas à des pouvoirs surnaturels ni à prédire l’avenir.</p>
+    <p style="margin-top:1rem;">Les consultations sont destinées à la réflexion personnelle et ne constituent en aucun cas des conseils médicaux, juridiques ou financiers.</p>
+    <p style="margin-top:1rem;">Service réservé aux personnes majeures. Données traitées conformément au RGPD.</p>
+    <p style="margin-top:2rem;">© 2026 Luna</p>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function startChat(name) {
+  document.getElementById('chat-title').textContent = 'Chat avec ' + name;
+  document.getElementById('chat-guide').textContent = name;
+  document.getElementById('chat-window').innerHTML = '<div class="msg guide">Bonjour, je suis ' + name + '. Quelle question vous occupe en ce moment ?</div>';
+  show('chat');
+}
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const win = document.getElementById('chat-window');
+  win.innerHTML += '<div class="msg user">' + text + '</div>';
+  input.value = '';
+  setTimeout(() => {
+    const replies = ["Je comprends. Prenons le temps de regarder cela ensemble.","Les cartes suggèrent un moment de transition. Qu’est-ce qui vous retient le plus ?","Votre ressenti est important. Voulez-vous que je développe sur un aspect précis ?"];
+    const reply = replies[Math.floor(Math.random() * replies.length)];
+    win.innerHTML += '<div class="msg guide">' + reply + '</div>';
+    win.scrollTop = win.scrollHeight;
+  }, 800);
+  win.scrollTop = win.scrollHeight;
+}
+function startCall() { document.getElementById('call-status').textContent = 'Appel en cours… (simulation)'; }
+function sendMessage() {
+  const text = document.getElementById('msg-text').value.trim();
+  if (!text) return alert('Écrivez votre question');
+  document.getElementById('msg-success').style.display = 'block';
+  document.getElementById('msg-text').value = '';
+}
+function submitGuide() {
+  const name = document.getElementById('g-name').value.trim();
+  if (!name) return alert('Indiquez votre nom');
+  document.getElementById('g-success').style.display = 'block';
+}
+function goToPayment(item, price) {
+  document.getElementById('pay-item').textContent = item;
+  document.getElementById('pay-price').textContent = price;
+  document.getElementById('pay-success').style.display = 'none';
+  show('payment');
+}
+function processPayment() {
+  const num = document.getElementById('card-number').value.trim();
+  if (num.length < 12) return alert('Entrez un numéro de carte valide (simulation)');
+  document.getElementById('pay-success').style.display = 'block';
+  setTimeout(() => { alert('Paiement confirmé (simulation)'); show('home'); }, 1200);
+}
+</script>
+</body>
+</html>
