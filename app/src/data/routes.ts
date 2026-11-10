@@ -40,6 +40,7 @@ export interface RouteDef {
 }
 
 const extra: RouteDef[] = [
+  { path: "/guides/", title: "Guides", description: "Annuaire des guides fictifs, filtrable par pratique, thème et canal.", group: "public", indexable: true },
   { path: "/voyants/", title: "Guides", description: "Annuaire des guides fictifs de démonstration, humains et IA.", group: "public", indexable: true },
   { path: "/specialites/", title: "Spécialités", description: "Les pratiques proposées sur Luna.", group: "public", indexable: true },
   { path: "/themes/", title: "Thèmes", description: "Questions d’amour, de travail, de famille et d’avenir.", group: "public", indexable: true },

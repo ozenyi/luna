@@ -1,6 +1,6 @@
 # Luna v2 — rapport
 
-Prototype statique : `https://ozenyi.github.io/luna/v2/` (175 pages HTML, une URL réelle par écran, listées dans `v2/sitemap.xml`). Les textes publics des 51 pages éditoriales viennent du dossier `content/editorial/`. Les CGU, CGV, mentions, confidentialité, cookies et conditions guides viennent de la spec juridique (`content/legal/spec-juridique.md`). Les placeholders `[À DÉFINIR]` et `[CROCHETS]` sont laissés tels quels. Quand les deux sources divergent, la spec juridique l’emporte (mention de divertissement, libellé « Guide virtuel : intelligence artificielle », badge IA). Les profils fictifs ne portent ni note, ni avis, ni mention « vérifié(e) par Luna ». Les guides humains fictifs affichent une disponibilité **simulée** et ne sont pas présentés comme disponibles au lancement. Les guides IA (Séléné, Véga) sont signalés en permanence.
+Prototype statique : `https://ozenyi.github.io/luna/v2/` (176 pages HTML, une URL réelle par écran, listées dans `v2/sitemap.xml`). Les textes publics des 51 pages éditoriales viennent du dossier `content/editorial/`. Les CGU, CGV, mentions, confidentialité, cookies et conditions guides viennent de la spec juridique (`content/legal/spec-juridique.md`). Les placeholders `[À DÉFINIR]` et `[CROCHETS]` sont laissés tels quels. Quand les deux sources divergent, la spec juridique l’emporte (mention de divertissement, libellé « Guide virtuel : intelligence artificielle », badge IA). Les profils fictifs ne portent ni note, ni avis, ni mention « vérifié(e) par Luna ». Les guides humains fictifs portent un statut explicite « simulé » (disponible, en consultation ou absent). Les guides IA (Séléné, Véga) sont signalés en permanence.
 
 ## Comptes de démonstration
 
@@ -18,7 +18,7 @@ Carte Stripe simulée acceptée : `4242 4242 4242 4242`. La carte `4000 0000 000
 
 ## Inventaire
 
-Le manifeste exhaustif est `v2/route-manifest.json` (175 URL). Grandes familles :
+Le manifeste exhaustif est `v2/route-manifest.json` (176 URL). Grandes familles :
 
 - Accueil, comment ça marche, offre, parrainage, devenir guide, candidature, FAQ
 - 12 profils (`/voyants/…/`) et leurs séances (`/consulter/`, appel, visio, réservation)

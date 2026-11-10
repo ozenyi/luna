@@ -497,6 +497,13 @@
     "indexable": true
   },
   {
+    "path": "/guides/",
+    "title": "Guides",
+    "description": "Annuaire des guides fictifs, filtrable par pratique, thème et canal.",
+    "group": "public",
+    "indexable": true
+  },
+  {
     "path": "/horoscope/",
     "title": "Horoscope",
     "description": "Les douze signes, comme repères symboliques.",

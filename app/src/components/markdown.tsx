@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import { headingId } from "../lib/format";
+import { stripInternalNotes } from "../lib/notes";
 import { hrefFor } from "../lib/path";
 import { useRoute } from "./route";
 
@@ -34,7 +35,7 @@ function LinkLike({ href, children }: { href: string; children: ReactNode }) {
 
 export function Markdown({ source }: { source: string }) {
   const { path } = useRoute();
-  const lines = source.replace(/\r\n/g, "\n").split("\n");
+  const lines = stripInternalNotes(source).replace(/\r\n/g, "\n").split("\n");
   const blocks: ReactNode[] = [];
   let i = 0;
   let key = 0;

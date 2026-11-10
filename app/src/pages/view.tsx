@@ -3,12 +3,12 @@ import { shouldWarn } from "@domain/billing";
 import { hasGranted, type ConsentRecord } from "@domain/consent";
 import { AI_TRAINING_BOX, ART9_BOX, ART9_INTRO, CGU_LABEL, CGV_LABEL, ENTERTAINMENT, LEGAL_VERSION, MARKETING, MARKETING_INTRO, RECORDING_IVR, VIDEO_NOTICE, WAIVER_LABEL, AGE_LABEL } from "../data/legal-copy";
 import { PACKS } from "@domain/packs";
-import { allRoutes, pageByPath, voyantBySlug, voyants, type CatalogPage, type CatalogVoyant } from "../data/routes";
+import { allRoutes, pageByPath, voyantBySlug, voyants, type CatalogPage } from "../data/routes";
 import { clock, euros } from "../lib/format";
-import { imageHref } from "../lib/path";
 import { LUNA_CONFIG, apiPost } from "../config";
 import { store, type Session } from "../store/demoStore";
 import { Markdown } from "../components/markdown";
+import { Directory, Home, portraitAlt, portraitSrc, Profile } from "../components/marketplace";
 import { A, useRoute } from "../components/route";
 
 function Gate({ onDone }: { onDone: (ok: boolean) => void }) {
@@ -35,43 +35,9 @@ function needArt9(): boolean {
   return !hasGranted(records, "sensitive_data_art9");
 }
 
-function Avatar({ guide, from }: { guide: CatalogVoyant; from: string }) {
-  if (guide.photo) return <img className="avatar" src={imageHref(from, guide.photo)} alt={`Illustration fictive de ${guide.name}`} width={84} height={84} />;
-  return (
-    <svg className="avatar-svg" viewBox="0 0 84 84" role="img" aria-label={`Illustration fictive de ${guide.name}`}>
-      <circle cx="42" cy="42" r="40" fill={`hsl(${guide.hue} 28% 18%)`} />
-      <circle cx="42" cy="34" r="14" fill="#f4e2bc" />
-      <path d="M16 72c6-14 16-20 26-20s20 6 26 20" fill="#e4c48a" />
-    </svg>
-  );
-}
-
 function Doc({ page }: { page: CatalogPage }) {
-  const guide = page.slug.startsWith("voyants/") ? voyantBySlug(page.slug.slice("voyants/".length)) : undefined;
-  const { path } = useRoute();
-  const online = guide ? store.state.presence[guide.slug] : false;
   return (
-    <article className="wrap">
-      {guide && (
-        <header className="panel" style={{ marginBottom: "1rem" }}>
-          <div className="btn-row">
-            <Avatar guide={guide} from={path} />
-            <div>
-              <p className="pill">Profil fictif — contenu de démonstration</p>
-              {guide.kind === "ai" ? (
-                <>
-                  <p className="pill pill-ai">IA</p>
-                  <p className="banner-ai">Guide virtuel : intelligence artificielle</p>
-                </>
-              ) : (
-                <p className="pill pill-human">Guide humain</p>
-              )}
-              <p>{guide.kind === "ai" ? "Disponible maintenant, 24 h/24." : online ? "Disponibilité simulée : marqué en ligne dans la démo. Ce profil n’est pas un guide réel." : "Disponibilité simulée : hors ligne. Ce profil fictif n’est pas proposé comme disponible au lancement."}</p>
-              <A className="btn btn-gold" to={`/voyants/${guide.slug}/consulter/`}>Consulter {guide.name}</A>
-            </div>
-          </div>
-        </header>
-      )}
+    <article className="wrap" aria-label={page.h1}>
       <Markdown source={page.body} />
     </article>
   );
@@ -113,8 +79,8 @@ function Signup() {
     else go("/compte/");
   }
   return (
-    <form className="wrap" data-testid="signup-form" onSubmit={onSubmit}>
-      <h1>Créer un compte</h1>
+    <form className="wrap" data-testid="signup-form" onSubmit={onSubmit} aria-labelledby="page-title">
+      <h1 id="page-title">Créer un compte</h1>
       <label className="field">Prénom<input name="firstName" required autoComplete="given-name" /></label>
       <label className="field">Nom<input name="lastName" required autoComplete="family-name" /></label>
       <label className="field">E-mail<input name="email" type="email" required autoComplete="email" data-testid="signup-email" /></label>
@@ -154,9 +120,8 @@ function Login() {
     go(role === "admin" ? "/admin/" : role === "voyant" ? "/espace-voyant/" : "/compte/");
   }
   return (
-    <form className="wrap" data-testid="login-form" onSubmit={onSubmit}>
-      <h1>Connexion</h1>
-      <p className="muted">Comptes de démonstration : admin@luna.test, voyant@luna.test, client@luna.test. Mot de passe Luna-demo-2026. Surchargeables par les variables LUNA_ADMIN_EMAIL et LUNA_ADMIN_PASSWORD.</p>
+    <form className="wrap" data-testid="login-form" onSubmit={onSubmit} aria-labelledby="page-title">
+      <h1 id="page-title">Connexion</h1>
       {!otp && <>
         <label className="field">E-mail<input name="email" type="email" required data-testid="login-email" autoComplete="username" /></label>
         <label className="field">Mot de passe<input name="password" type="password" required data-testid="login-password" autoComplete="current-password" /></label>
@@ -215,7 +180,7 @@ function Checkout() {
 
 function SessionScreen({ slug, channel }: { slug: string; channel: Session["channel"] }) {
   const guide = voyantBySlug(slug);
-  const { go } = useRoute();
+  const { go, path } = useRoute();
   const [now, setNow] = useState(Date.now());
   const [error, setError] = useState<string | null>(null);
   const [gate, setGate] = useState(false);
@@ -250,23 +215,35 @@ function SessionScreen({ slug, channel }: { slug: string; channel: Session["chan
   const spent = session ? session.billedMinutes * session.rateCentsPerMin : 0;
   const remain = session ? Math.floor(store.remaining(session, now) / 1000) : 0;
   const messages = session ? store.state.messages.filter((message) => message.sessionId === session.id) : [];
+  const rate = channel === "call" ? guide.demoCallCents : channel === "video" ? guide.demoVideoCents : guide.demoChatCents;
+  const cap = 5000;
+  const gauge = Math.max(0, Math.min(100, Math.round((store.usable() / cap) * 100)));
   return (
-    <section className="wrap">
+    <section className="room" aria-label="Séance">
       {gate && <Gate onDone={accept} />}
-      <p className="pill">Profil fictif — contenu de démonstration</p>
-      {guide.kind === "ai" && <p className="banner-ai">IA · Guide virtuel : intelligence artificielle. Ce bandeau reste affiché pendant toute la séance.</p>}
-      <h1>{channel === "call" ? `Appeler ${guide.name}` : channel === "video" ? `Visio avec ${guide.name}` : `Écrire à ${guide.name}`}</h1>
-      <p>Tarif de démonstration : {euros(channel === "call" ? guide.demoCallCents : channel === "video" ? guide.demoVideoCents : guide.demoChatCents)} TTC par minute. Vous avez {euros(store.usable())} utilisables, soit environ {store.usable() && guide.demoChatCents ? Math.floor(store.usable() / (channel === "call" ? guide.demoCallCents : guide.demoChatCents)) : 0} minutes. {guide.kind === "human" ? "Disponibilité simulée." : "Disponible maintenant."}</p>
-      {!session && channel === "chat" && <button className="btn btn-gold" type="button" data-testid="start-chat" onClick={begin}>Démarrer le chat</button>}
-      {!session && channel !== "chat" && <button className="btn btn-gold" type="button" onClick={begin}>Démarrer la simulation</button>}
-      {channel === "call" && <div className="panel"><h2>Twilio Voice, mode démo</h2><p>Pont d’appel : votre numéro et celui du guide restent masqués. Aucun enregistrement par défaut.</p><p>{RECORDING_IVR}</p>{session && <label className="check"><input type="checkbox" checked={session.recordingConsent} onChange={(event) => store.setRecording(session.id, event.target.checked)} /> <span>Touche 1 : j’accepte l’enregistrement qualité de cet appel, conservé 30 jours.</span></label>}</div>}
-      {channel === "video" && <div className="panel"><h2>Daily, salle simulée</h2><p>{VIDEO_NOTICE}</p><p>recordParticipantsOnConnect = false. Salle : {session?.dailyRoom ?? "créée au démarrage"}.</p><A to="/session/test/">Essayer la caméra et le micro</A></div>}
+      <header className="room-bar">
+        <img src={portraitSrc(path, guide)} alt={portraitAlt(guide)} width={52} height={52} />
+        <div>
+          <strong>{channel === "call" ? `Appel · ${guide.name}` : channel === "video" ? `Visio · ${guide.name}` : guide.name}</strong>
+          <p className="badges">
+            <span className="illus">Illustration</span>
+            {guide.kind === "ai" ? <span className="pill pill-ai">IA</span> : <span className="pill">Profil fictif</span>}
+            {guide.kind === "ai" && <span className="banner-ai">Guide virtuel : intelligence artificielle</span>}
+          </p>
+        </div>
+        <div className="gauge">
+          <p className="counter" data-testid={channel === "chat" ? "chat-countdown" : "call-counter"}>{session ? `${clock(elapsed)} · ${euros(spent)} · reste ${clock(remain)}` : `${euros(rate)}/min · crédit ${euros(store.usable())}`}</p>
+          <i><b style={{ width: `${gauge}%` }} /></i>
+        </div>
+      </header>
+      {!session && <div className="wrap"><p>{euros(rate)} TTC par minute, affiché avant de commencer. {guide.kind === "human" ? "Disponibilité simulée." : "Disponible maintenant."}</p>{channel === "chat" && <button className="btn btn-gold" type="button" data-testid="start-chat" onClick={begin}>Démarrer le chat</button>}{channel !== "chat" && <button className="btn btn-gold" type="button" onClick={begin}>Démarrer la simulation</button>}</div>}
+      {channel === "call" && <div className="wrap panel"><h2>Twilio Voice, mode démo</h2><p>Pont d’appel : les numéros restent masqués. Aucun enregistrement par défaut.</p><p>{RECORDING_IVR}</p>{session && <label className="check"><input type="checkbox" checked={session.recordingConsent} onChange={(event) => store.setRecording(session.id, event.target.checked)} /> <span>Touche 1 : j’accepte l’enregistrement qualité de cet appel, conservé 30 jours.</span></label>}</div>}
+      {channel === "video" && <div className="wrap panel video-stage"><img src={portraitSrc(path, guide)} alt={portraitAlt(guide)} width={160} height={160} /><h2>Salle Daily simulée</h2><p>{VIDEO_NOTICE}</p><p>recordParticipantsOnConnect = false. Salle : {session?.dailyRoom ?? "créée au démarrage"}.</p><A to="/session/test/">Essayer la caméra et le micro</A></div>}
       {session && (
-        <div className="panel">
-          <p className="counter" data-testid={channel === "chat" ? "chat-countdown" : "call-counter"}>{clock(elapsed)} · {euros(spent)} · reste {clock(remain)}</p>
-          {shouldWarn(remain * 1000) && <p className="warn" role="status">Il reste moins d’une minute de crédit.</p>}
+        <>
+          {shouldWarn(remain * 1000) && <p className="warn wrap" role="status">Il reste moins d’une minute de crédit.</p>}
           {session.confirmPending && (
-            <div className="panel" role="dialog" aria-modal="true">
+            <div className="panel wrap" role="dialog" aria-modal="true">
               <p>Vous êtes en consultation depuis {Math.floor(elapsed / 60)} minutes. Cela vous a coûté {euros(spent)}. Voulez-vous continuer ?</p>
               <div className="btn-row">
                 <button className="btn btn-ghost" type="button" data-testid="end-session" onClick={() => store.endSession(session.id)}>Terminer la séance</button>
@@ -278,17 +255,17 @@ function SessionScreen({ slug, channel }: { slug: string; channel: Session["chan
             {messages.map((message) => <p key={message.id} className={`bubble ${message.sender === "client" ? "client" : ""}`}><strong>{message.sender === "system" ? "Luna" : message.sender === "client" ? "Vous" : guide.name}</strong><br />{message.body}</p>)}
           </div>
           {channel === "chat" && (
-            <form onSubmit={(event) => { event.preventDefault(); if (!text.trim()) return; store.sendMessage(session.id, text); setText(""); }}>
-              <label className="field">Message<textarea data-testid="chat-input" value={text} onChange={(event) => setText(event.target.value)} /></label>
+            <form className="composer" onSubmit={(event) => { event.preventDefault(); if (!text.trim()) return; store.sendMessage(session.id, text); setText(""); }}>
+              <label className="sr" htmlFor="chat-input">Message</label>
+              <textarea id="chat-input" data-testid="chat-input" value={text} onChange={(event) => setText(event.target.value)} />
               <button className="btn btn-gold" type="submit" data-testid="chat-send">Envoyer</button>
             </form>
           )}
-          {!session.confirmPending && <button className="btn btn-ghost" type="button" data-testid="end-session" onClick={() => store.endSession(session.id)}>Terminer la séance</button>}
-          <Report target={session.id} />
-        </div>
+          {!session.confirmPending && <div className="wrap"><button className="btn btn-ghost" type="button" data-testid="end-session" onClick={() => store.endSession(session.id)}>Terminer la séance</button> <Report target={session.id} /></div>}
+        </>
       )}
-      {error && <p className="alert" role="alert">{error}</p>}
-      <p>{ENTERTAINMENT}</p>
+      {error && <p className="alert wrap" role="alert">{error}</p>}
+      <p className="wrap muted">{ENTERTAINMENT}</p>
     </section>
   );
 }
@@ -373,13 +350,17 @@ function DeviceTest() {
 }
 
 function simple(title: string, body: ReactNode) {
-  return <section className="wrap"><h1>{title}</h1>{body}</section>;
+  return <section className="wrap" aria-labelledby="page-title"><h1 id="page-title">{title}</h1>{body}</section>;
 }
 
 export function View() {
   const { path, search, go } = useRoute();
   const [, setTick] = useState(0);
   useEffect(() => store.subscribe(() => setTick((value) => value + 1)), []);
+  if (path === "/") return <Home />;
+  if (path === "/guides/" || path === "/voyants/") return <Directory base={path} />;
+  const profile = /^\/voyants\/([^/]+)\/$/.exec(path);
+  if (profile && voyantBySlug(profile[1])) return <Profile slug={profile[1]} />;
   const editorial = pageByPath.get(path);
   if (editorial) return <Doc page={editorial} />;
   const consulter = /^\/voyants\/([^/]+)\/consulter\/$/.exec(path);
@@ -391,14 +372,13 @@ export function View() {
   const book = /^\/reserver\/([^/]+)\/$/.exec(path);
   if (book) return <Booking slug={book[1]} />;
   if (path === "/session/test/") return <DeviceTest />;
-  if (path === "/voyants/") return <Directory />;
   if (path === "/specialites/" || path === "/themes/" || path === "/horoscope/" || path === "/blog/") return <Index prefix={path} />;
-  if (path === "/tarifs/" || path === "/compte/recharger/") return <section className="wrap"><h1>Recharges</h1><PackButtons /></section>;
+  if (path === "/tarifs/" || path === "/compte/recharger/") return <section className="wrap" aria-labelledby="page-title"><h1 id="page-title">Recharges</h1><PackButtons /></section>;
   if (path === "/inscription/") return <Signup />;
   if (path === "/connexion/") return <Login />;
   if (path === "/compte/paiement/") return <Checkout />;
   if (path === "/compte/portefeuille/" || path === "/compte/") return <Wallet home={path === "/compte/"} />;
-  if (path === "/admin/litiges/") return <Disputes />;
+  if (path === "/admin/" || path.startsWith("/admin/")) return <AdminShell path={path} />;
   if (path === "/plan-du-site/") return <Plan />;
   if (path === "/compte/plafond/") return <Caps />;
   if (path === "/compte/pause/") return <Pause />;
@@ -408,8 +388,6 @@ export function View() {
   if (path === "/avis/") return simple("Avis", <p>Aucun avis n’est publié. Seules les personnes ayant réalisé une consultation payante pourront en laisser un, daté, après contrôle. Les profils fictifs n’affichent ni note ni témoignage.</p>);
   if (path === "/preferences-cookies/") return simple("Préférences cookies", <p>Utilisez « Gérer mes cookies » en bas de page. Tout refuser est au même niveau que tout accepter.</p>);
   if (path === "/desinscription/") return <Unsubscribe />;
-  if (path === "/admin/") return <AdminHome />;
-  if (path.startsWith("/admin/")) return <AdminPage path={path} />;
   if (path.startsWith("/espace-voyant")) return <VoyantSpace path={path} />;
   if (path.startsWith("/compte/")) return <AccountRest path={path} />;
   if (path === "/mot-de-passe-oublie/") return <Forgot />;
@@ -424,56 +402,47 @@ export function View() {
   void goUnused;
 }
 
-function Directory() {
-  const { path, search, go } = useRoute();
-  const kind = search.get("type") || "";
-  const channel = search.get("canal") || "";
-  const list = voyants.filter((guide) => (kind ? guide.kind === kind : true) && (channel ? guide.channels.includes(channel as CatalogVoyant["channels"][number]) : true));
-  return (
-    <section className="wrap">
-      <h1>Guides</h1>
-      <p>Tous les profils sont fictifs. Les guides humains ne sont pas affichés comme disponibles au lancement. Aucune note n’est montrée.</p>
-      <div className="filters">
-        <label>Type<select value={kind} onChange={(event) => go(`/voyants/?type=${event.target.value}`)}><option value="">Tous</option><option value="ai">Guides IA uniquement</option><option value="human">Guides humains uniquement</option></select></label>
-        <label>Canal<select value={channel} onChange={(event) => go(`/voyants/?canal=${event.target.value}`)}><option value="">Tous</option><option value="chat">Chat</option><option value="call">Téléphone</option><option value="message">Message</option></select></label>
-      </div>
-      <div className="grid cards">
-        {list.map((guide) => (
-          <article className="card" key={guide.slug}>
-            <Avatar guide={guide} from={path} />
-            <h2><A to={`/voyants/${guide.slug}/`}>{guide.name}</A></h2>
-            {guide.kind === "ai" ? <p className="pill pill-ai">IA · Guide virtuel : intelligence artificielle</p> : <p className="pill pill-human">Guide humain · profil fictif</p>}
-            <p>{guide.kind === "ai" ? "Disponible maintenant, 24 h/24." : "Disponibilité simulée."}</p>
-            <p>Démonstration : {euros(guide.demoChatCents)} / min en chat.</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function Index({ prefix }: { prefix: string }) {
   const items = allRoutes().filter((route) => route.path.startsWith(prefix) && route.path !== prefix);
   const titles: Record<string, string> = { "/specialites/": "Pratiques", "/themes/": "Thèmes", "/horoscope/": "Signes", "/blog/": "Magazine" };
-  return <section className="wrap"><h1>{titles[prefix]}</h1><ul>{items.map((route) => <li key={route.path}><A to={route.path}>{route.title}</A></li>)}</ul></section>;
+  return <section className="wrap" aria-labelledby="page-title"><h1 id="page-title">{titles[prefix]}</h1><ul>{items.map((route) => <li key={route.path}><A to={route.path}>{route.title}</A></li>)}</ul></section>;
 }
 
 function Wallet({ home }: { home: boolean }) {
   const user = store.user();
   if (!user) return simple("Mon compte", <p><A to="/connexion/">Connectez-vous</A> ou <A to="/inscription/">créez un compte</A>.</p>);
+  const used = Math.min(100, Math.round((spentToday(user.id) / user.dailyCapCents) * 100));
   return (
-    <section className="wrap">
-      <h1>{home ? `Bonjour ${user.firstName}` : "Portefeuille"}</h1>
-      <p data-testid="wallet-balance">Solde : {euros(store.balance(user.id))}. Utilisable : {euros(store.usable(user.id))}.</p>
-      <div className="btn-row">
-        <A className="btn btn-gold" to="/compte/recharger/">Recharger</A>
-        <A className="btn btn-ghost" to="/compte/plafond/">Plafond</A>
-        <A className="btn btn-ghost" to="/compte/pause/">Faire une pause</A>
-        <A className="btn btn-ghost" to="/compte/confidentialite/">Confidentialité</A>
+    <section className="wrap saas" aria-labelledby="page-title">
+      <nav className="saas-nav" aria-label="Compte">
+        <A to="/compte/" aria-current={home ? "page" : undefined}>Tableau de bord</A>
+        <A to="/compte/portefeuille/">Portefeuille</A>
+        <A to="/compte/conversations/">Séances</A>
+        <A to="/compte/reservations/">Réservations</A>
+        <A to="/compte/plafond/">Plafonds</A>
+        <A to="/compte/confidentialite/">Confidentialité</A>
+      </nav>
+      <div>
+        <h1 id="page-title">{home ? `Bonjour ${user.firstName}` : "Portefeuille"}</h1>
+        <div className="kpis">
+          <article className="kpi"><span>Solde</span><strong data-testid="wallet-balance">{euros(store.balance(user.id))}</strong><span>Utilisable {euros(store.usable(user.id))}</span></article>
+          <article className="kpi"><span>Plafond du jour</span><strong>{euros(user.dailyCapCents)}</strong><span>{used} % engagé</span></article>
+          <article className="kpi"><span>Plafond du mois</span><strong>{euros(user.monthlyCapCents)}</strong></article>
+        </div>
+        <p className="gauge"><i><b style={{ width: `${used}%` }} /></i></p>
+        <div className="btn-row">
+          <A className="btn btn-gold" to="/compte/recharger/">Recharger</A>
+          <A className="btn btn-ghost" to="/compte/pause/">Faire une pause</A>
+        </div>
+        {!home && <PackButtons />}
       </div>
-      {!home && <PackButtons />}
     </section>
   );
+}
+
+function spentToday(userId: string): number {
+  const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  return store.state.payments.filter((payment) => payment.userId === userId && payment.createdAt.slice(0, 10) === day).reduce((sum, payment) => sum + payment.paidCents, 0);
 }
 
 function Disputes() {
@@ -656,26 +625,47 @@ function Plan() {
   return <section className="wrap"><h1>Plan du site</h1><ul>{routes.map((route) => <li key={route.path}><A to={route.path}>{route.title}</A></li>)}</ul></section>;
 }
 
+function AdminShell({ path }: { path: string }) {
+  const user = store.user();
+  if (!user || user.role !== "admin") return simple("Administration", <A to="/connexion/">Connexion administrateur</A>);
+  const links = ["/admin/", "/admin/clients/", "/admin/voyants/", "/admin/validations/", "/admin/litiges/", "/admin/audit/", "/admin/retention/", "/admin/rgpd/", "/admin/support/", "/admin/campagnes/", "/admin/securite/"];
+  return (
+    <section className="wrap saas" aria-label="Administration">
+      <nav className="saas-nav" aria-label="Administration">
+        {links.map((href) => <A key={href} to={href} aria-current={path === href ? "page" : undefined}>{href.replace("/admin/", "").replace("/", "") || "Tableau"}</A>)}
+      </nav>
+      <div>{path === "/admin/" ? <AdminHome /> : path === "/admin/litiges/" ? <Disputes /> : <AdminPage path={path} />}</div>
+    </section>
+  );
+}
+
 function AdminHome() {
   const user = store.user();
   if (!user || user.role !== "admin") return simple("Administration", <A to="/connexion/">Connexion administrateur</A>);
   const months = [40, 55, 48, 62, 58, 70];
   return (
-    <section className="wrap">
-      <h1>Administration</h1>
+    <div>
+      <h1 id="page-title">Tableau de bord</h1>
+      <div className="kpis">
+        <article className="kpi"><span>Clients</span><strong>{store.state.users.filter((item) => item.role === "client").length}</strong></article>
+        <article className="kpi"><span>Guides</span><strong>{voyants.length}</strong></article>
+        <article className="kpi"><span>Paiements</span><strong>{store.state.payments.length}</strong></article>
+        <article className="kpi"><span>Séances</span><strong>{store.state.sessions.length}</strong></article>
+      </div>
       <div className="chart" aria-hidden="true">{months.map((value) => <span key={value} style={{ height: `${value}%` }} />)}</div>
       <table><caption>Revenus de démonstration</caption><tbody>{months.map((value, index) => <tr key={index}><td>Mois {index + 1}</td><td>{value}</td></tr>)}</tbody></table>
-      <ul>
-        {["/admin/clients/", "/admin/voyants/", "/admin/validations/", "/admin/litiges/", "/admin/audit/", "/admin/retention/", "/admin/rgpd/", "/admin/support/", "/admin/campagnes/", "/admin/securite/"].map((href) => <li key={href}><A to={href}>{href}</A></li>)}
-      </ul>
-    </section>
+    </div>
   );
 }
 
 function AdminPage({ path }: { path: string }) {
   const user = store.user();
+  const [q, setQ] = useState("");
   if (!user || user.role !== "admin") return simple("Administration", <A to="/connexion/">Connexion</A>);
-  if (path === "/admin/clients/") return simple("Clients", <ul>{store.state.users.filter((item) => item.role === "client").map((item) => <li key={item.id}>{item.pseudonym} — {item.email}</li>)}</ul>);
+  if (path === "/admin/clients/") {
+    const rows = store.state.users.filter((item) => item.role === "client" && `${item.pseudonym} ${item.email}`.toLowerCase().includes(q.toLowerCase()));
+    return <div><h1>Clients</h1><label className="field">Recherche<input value={q} onChange={(event) => setQ(event.target.value)} /></label><table><tbody>{rows.map((item) => <tr key={item.id}><td>{item.pseudonym}</td><td>{item.email}</td></tr>)}</tbody></table></div>;
+  }
   if (path === "/admin/voyants/") return simple("Guides", <ul>{voyants.map((guide) => <li key={guide.slug}>{guide.name} — {guide.kind === "ai" ? "IA" : "humain fictif"} — {store.state.presence[guide.slug] ? "présence simulée active" : "hors ligne"}</li>)}</ul>);
   if (path === "/admin/validations/") return simple("Validations", <ul>{store.state.applications.map((item) => <li key={item.id}>{item.name} ({item.country}) {item.status} <button type="button" onClick={() => store.decideApplication(item.id, "approved")}>Approuver</button></li>)}</ul>);
   if (path === "/admin/audit/") return simple("Journal d’audit", <ul>{store.state.audit.map((row) => <li key={row.id}>{row.at} — {row.action} — {row.summary}</li>)}</ul>);
@@ -709,7 +699,7 @@ function Support() {
 
 function VoyantSpace({ path }: { path: string }) {
   const user = store.user();
-  if (!user || user.role !== "voyant" || !user.voyantSlug) return simple("Espace guide", <p><A to="/connexion/">Connexion guide</A>. Le compte de démonstration est voyant@luna.test.</p>);
+  if (!user || user.role !== "voyant" || !user.voyantSlug) return simple("Espace guide", <p><A to="/connexion/">Connectez-vous avec le compte guide</A>.</p>);
   const guide = voyantBySlug(user.voyantSlug);
   const online = store.state.presence[user.voyantSlug];
   if (path === "/espace-voyant/disponibilites/") {
