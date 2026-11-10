@@ -861,28 +861,29 @@ Un pied de page et un écran d'accueil de séance rappellent : « La voyance et 
 ```markdown
 # Mentions légales
 
-Dernière mise à jour : [DATE] — version [X]
+Dernière mise à jour : 10 novembre 2026 — version [X]
 
 ## Éditeur
 Le site et l'application Luna (ci-après « Luna ») sont édités par :
-[RAISON SOCIALE], [FORME JURIDIQUE] au capital de [MONTANT] €,
-immatriculée au RCS de [VILLE] sous le numéro [SIREN],
-dont le siège social est situé [ADRESSE COMPLÈTE].
-N° de TVA intracommunautaire : [NUMÉRO TVA].
-Téléphone : [NUMÉRO] — Email : [EMAIL DE CONTACT].
+EURL CRISTAL, EURL (entreprise unipersonnelle à responsabilité limitée) au capital de 2 000 €,
+immatriculée au RCS d'Orléans sous le numéro 804 380 582,
+SIRET du siège : 804 380 582 00028,
+dont le siège social est situé 7 bis rue Bernard Palissy, 45800 Saint-Jean-de-Braye, France.
+N° de TVA intracommunautaire : FR08804380582.
+Téléphone : [À DÉFINIR] — Email : [À DÉFINIR].
 
-(Si l'éditeur est une personne physique : [Prénom NOM], entrepreneur individuel, [SIREN], [ADRESSE], [EMAIL].)
+Les noms de domaine sont enregistrés au nom personnel d'Ozen YIGIT, gérant.
 
 ## Directeur de la publication
-[Prénom NOM], en qualité de [FONCTION].
+Ozen YIGIT, en qualité de gérant.
 
 ## Hébergement
 [NOM DE L'HÉBERGEUR], [FORME], [ADRESSE], [TÉLÉPHONE].
 (Prototype statique : GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis [adresse à vérifier].)
 
 ## Données personnelles
-Responsable de traitement : [RAISON SOCIALE].
-Délégué à la protection des données / contact : [NOM OU SERVICE], [EMAIL DPO], [ADRESSE POSTALE].
+Responsable de traitement : EURL CRISTAL.
+Délégué à la protection des données / contact : EURL CRISTAL – données personnelles, contact@lunavoyance.com, 7 bis rue Bernard Palissy, 45800 Saint-Jean-de-Braye, France.
 Voir notre [Politique de confidentialité](/confidentialite) et notre [Politique cookies](/cookies).
 
 ## Médiation de la consommation
@@ -908,7 +909,7 @@ L'ensemble des contenus de Luna (textes, illustrations, logos, logiciels) est pr
 Version [X] du [DATE]
 
 ## 1. Objet
-Les présentes CGU régissent l'accès et l'utilisation de Luna, plateforme éditée par [RAISON SOCIALE] (« Luna », « nous »), qui met en relation des utilisateurs avec des guides de voyance et de guidance, humains indépendants ou intelligences artificielles, par chat, téléphone et visio. Les achats sont régis par les [Conditions générales de vente](/cgv).
+Les présentes CGU régissent l'accès et l'utilisation de Luna, plateforme éditée par EURL CRISTAL (« Luna », « nous »), qui met en relation des utilisateurs avec des guides de voyance et de guidance, humains indépendants ou intelligences artificielles, par chat, téléphone et visio. Les achats sont régis par les [Conditions générales de vente](/cgv).
 
 ## 2. Rôle de Luna (opérateur de plateforme)
 Conformément à l'article L.111-7 du Code de la consommation :
@@ -973,7 +974,7 @@ Les CGU sont soumises au droit français. En cas de litige, adressez d'abord une
 Version [X] du [DATE]
 
 ## 1. Vendeur
-[RAISON SOCIALE], [ADRESSE], [SIREN], [TVA], [EMAIL], [TÉLÉPHONE].
+EURL CRISTAL, 7 bis rue Bernard Palissy, 45800 Saint-Jean-de-Braye, France, SIREN 804 380 582, n° de TVA intracommunautaire FR08804380582. Email : [À DÉFINIR]. Téléphone : [À DÉFINIR].
 [À arbitrer avec l'avocat : Luna vend les consultations en son nom (y compris celles des guides humains), ou agit comme intermédiaire. Le présent modèle suppose que Luna vend en son nom, ce qui est plus simple pour le consommateur.]
 
 ## 2. Services et prix
@@ -1011,7 +1012,7 @@ Version [X] du [DATE]
 6.4 Remboursement sous 14 jours au plus, par le moyen de paiement d'origine.
 
 Modèle de formulaire de rétractation :
-« À l'attention de [RAISON SOCIALE], [ADRESSE], [EMAIL] : Je vous notifie par la présente ma rétractation du contrat portant sur [recharge / abonnement] commandé le [DATE]. Nom : … Email du compte : … Date : … »
+« À l'attention de EURL CRISTAL, 7 bis rue Bernard Palissy, 45800 Saint-Jean-de-Braye, France, email : [À DÉFINIR] : Je vous notifie par la présente ma rétractation du contrat portant sur [recharge / abonnement] commandé le [DATE]. Nom : … Email du compte : … Date : … »
 
 ## 7. Réclamations
 Service client : [EMAIL], [FORMULAIRE], réponse sous [5] jours ouvrés. Une séance contestée (problème technique, comportement contraire à la charte) peut donner lieu à un recrédit, après examen.
