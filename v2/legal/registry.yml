@@ -1,0 +1,34 @@
+# Registre des traitements (art. 30), repris de la spec juridique section 1.2.
+# Les [CROCHETS] sont à compléter par l'éditeur.
+- id: T1
+  name: Comptes clients
+  basis: contrat
+- id: T3
+  name: Consultations
+  basis: contrat
+  article9: consentement explicite
+- id: T4
+  name: Téléphonie masquée
+  basis: contrat
+- id: T5
+  name: Enregistrement qualité
+  basis: consentement
+  default: off
+- id: T6
+  name: Visio
+  recording: jamais
+- id: T7
+  name: Paiements
+  basis: contrat
+- id: T9
+  name: Garde-fous
+  basis: protection des personnes
+- id: T12
+  name: Prospection
+  basis: consentement par canal
+- id: T15
+  name: Journalisation
+  basis: interet legitime
+- id: T16
+  name: Droits RGPD
+  basis: obligation legale

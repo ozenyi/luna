@@ -1,0 +1,11 @@
+# Durées de la spec juridique Luna (section 3). Jours.
+messages_days: 365
+recordings_days: 30
+server_logs_days: 365
+inactive_account_days: 730
+audit_log_days: 365
+prospects_days: 1095
+accounting_archive_days: 3650
+consent_proof_archive_days: 1825
+distress_signal_days: 30
+backup_rotation_days: 35
