@@ -1,0 +1,184 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  VOYANT
+  ADMIN
+}
+
+enum GuideKind {
+  HUMAN
+  AI
+}
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  passwordHash      String
+  role              Role
+  firstName         String
+  lastName          String
+  pseudonym         String
+  birthDate         DateTime?
+  phone             String?
+  dailyCapCents     Int       @default(5000)
+  monthlyCapCents   Int       @default(15000)
+  selfExclusionUntil DateTime?
+  referralCode      String    @unique
+  totpSecret        String?
+  totpEnabled       Boolean   @default(false)
+  lastActivityAt    DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+  closedAt          DateTime?
+  guide             Guide?
+  wallet            Wallet?
+  consents          ConsentEvent[]
+  sessions          Consult[] @relation("ClientConsults")
+  authSessions      AuthSession[]
+}
+
+model AuthSession {
+  id        String   @id @default(cuid())
+  userId    String
+  csrfToken String
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ConsentEvent {
+  id           String   @id @default(cuid())
+  userId       String?
+  purpose      String
+  action       String
+  version      String
+  textSha256   String
+  channel      String
+  uiLocation   String
+  ipTruncated  String?
+  occurredAt   DateTime @default(now())
+  user         User?    @relation(fields: [userId], references: [id])
+  @@index([userId, purpose, occurredAt])
+}
+
+model Wallet {
+  id           String        @id @default(cuid())
+  userId       String        @unique
+  balanceCents Int           @default(0)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entries      LedgerEntry[]
+}
+
+model LedgerEntry {
+  id           String   @id @default(cuid())
+  walletId     String
+  type         String
+  amountCents  Int
+  balanceAfter Int
+  reference    String?
+  createdAt    DateTime @default(now())
+  wallet       Wallet   @relation(fields: [walletId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  userId          String
+  packId          String
+  paidCents       Int
+  grantedCents    Int
+  consumedCents   Int      @default(0)
+  refundedCents   Int      @default(0)
+  status          String
+  stripeRef       String?
+  usableAt        DateTime
+  createdAt       DateTime @default(now())
+}
+
+model Guide {
+  id             String    @id @default(cuid())
+  userId         String?   @unique
+  slug           String    @unique
+  displayName    String
+  kind           GuideKind
+  fictitious     Boolean   @default(true)
+  country        String    @default("FR")
+  chatRateCents  Int
+  callRateCents  Int
+  videoRateCents Int
+  availableNow   Boolean   @default(false)
+  status         String    @default("approved")
+  user           User?     @relation(fields: [userId], references: [id])
+  consults       Consult[]
+}
+
+model Consult {
+  id               String    @id @default(cuid())
+  clientId         String
+  guideId          String
+  channel          String
+  rateCentsPerMin  Int
+  billedMinutes    Int       @default(0)
+  status           String
+  guideKind        GuideKind
+  recordingConsent Boolean   @default(false)
+  videoRecorded    Boolean   @default(false)
+  purgeAfter       DateTime?
+  startedAt        DateTime  @default(now())
+  endedAt          DateTime?
+  client           User      @relation("ClientConsults", fields: [clientId], references: [id])
+  guide            Guide     @relation(fields: [guideId], references: [id])
+  messages         Message[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  consultId String
+  sender    String
+  body      String
+  purgeAfter DateTime
+  createdAt DateTime @default(now())
+  consult   Consult  @relation(fields: [consultId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id        BigInt   @id @default(autoincrement())
+  occurredAt DateTime @default(now())
+  actorId   String?
+  action    String
+  summary   String
+  prevHash  String
+  rowHash   String
+}
+
+model DataRequest {
+  id         String   @id @default(cuid())
+  userId     String
+  type       String
+  status     String
+  receivedAt DateTime @default(now())
+  dueAt      DateTime
+}
+
+model AccessGrant {
+  id         String   @id @default(cuid())
+  actorId    String
+  consultId  String
+  ticketId   String
+  reason     String
+  expiresAt  DateTime
+}
+
+model Invoice {
+  id        String   @id @default(cuid())
+  number    String   @unique
+  paymentId String   @unique
+  userId    String
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,1234 @@
+[
+  {
+    "path": "/",
+    "title": "Luna : guidance et voyance en ligne, en toute clarté",
+    "description": "Tarot, astrologie, numérologie : échangez par chat, téléphone ou message avec des guides IA et humains clairement identifiés. Réservé aux majeurs.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/404/",
+    "title": "Page introuvable",
+    "description": "Cette adresse ne correspond à aucune page.",
+    "group": "public",
+    "indexable": false
+  },
+  {
+    "path": "/a-propos/",
+    "title": "À propos",
+    "description": "Ce qu’est le prototype Luna.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/accessibilite/",
+    "title": "Accessibilité",
+    "description": "Engagement d’accessibilité du prototype.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/admin/",
+    "title": "Administration",
+    "description": "Back-office.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/audit/",
+    "title": "Journal d’audit",
+    "description": "Journal append-only.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/avis/",
+    "title": "Modération des avis",
+    "description": "Avis en attente.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/campagnes/",
+    "title": "Campagnes",
+    "description": "Prospection opt-in.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/clients/",
+    "title": "Clients",
+    "description": "Comptes clients.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/codes-promo/",
+    "title": "Codes promo",
+    "description": "Code BIENVENUE.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/integrations/",
+    "title": "Intégrations",
+    "description": "Stripe, Twilio, Daily, Brevo, Matomo.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/litiges/",
+    "title": "Litiges et remboursements",
+    "description": "Rembourser un paiement.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/retention/",
+    "title": "Rétention",
+    "description": "Purge automatique.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/revenus/",
+    "title": "Revenus",
+    "description": "Encaissements.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/rgpd/",
+    "title": "Demandes RGPD",
+    "description": "Export et suppression.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/securite/",
+    "title": "Sécurité",
+    "description": "Double authentification.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/statistiques/",
+    "title": "Statistiques",
+    "description": "Activité par guide.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/support/",
+    "title": "Support",
+    "description": "Accès aux conversations sur ticket.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/tarification/",
+    "title": "Tarification",
+    "description": "Commission de la plateforme.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/validations/",
+    "title": "Validations",
+    "description": "Candidatures et KYC.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/admin/voyants/",
+    "title": "Guides",
+    "description": "Fiches guides.",
+    "group": "admin",
+    "indexable": false
+  },
+  {
+    "path": "/aide/",
+    "title": "Aide",
+    "description": "Centre d’aide du prototype.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/aide/compte/",
+    "title": "Aide compte",
+    "description": "Créer un compte, se connecter, faire une pause.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/aide/consultations/",
+    "title": "Aide consultations",
+    "description": "Chat, téléphone, visio et signalement.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/aide/guides/",
+    "title": "Aide guides",
+    "description": "Différence entre guide IA et guide humain.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/aide/paiements/",
+    "title": "Aide paiements",
+    "description": "Recharges, plafonds, factures et remboursements.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/avis/",
+    "title": "Avis",
+    "description": "Avis de clients ayant réellement consulté. Aucun avis n’est encore publié.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/",
+    "title": "Magazine",
+    "description": "Articles pour préparer une consultation avec mesure.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/bien-formuler-sa-question/",
+    "title": "Bien formuler sa question avant une consultation | Luna",
+    "description": "Une question claire donne un échange plus utile. Méthode simple en cinq étapes pour préparer votre question avant de consulter un guide.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/comprendre-son-theme-natal/",
+    "title": "Comprendre son thème natal sans s’y enfermer | Luna",
+    "description": "Signes, planètes, maisons, aspects : les bases du thème natal expliquées simplement, et comment s’en servir pour réfléchir plutôt que comme un destin.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/consulter-avec-mesure/",
+    "title": "Consulter avec mesure : savoir faire une pause | Luna",
+    "description": "Consulter peut aider à réfléchir, mais pas à remplacer ses propres décisions. Signaux à repérer, outils pour faire une pause et aides disponibles.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/guide-ia-ou-guide-humain/",
+    "title": "Guide IA ou guide humain : comment choisir | Luna",
+    "description": "Disponibilité, écoute, confidentialité, limites : ce qui distingue un guide IA d’un guide humain sur Luna, pour choisir en connaissance de cause.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/lire-un-tirage-en-trois-cartes/",
+    "title": "Lire un tirage de tarot en trois cartes | Luna",
+    "description": "Le tirage en trois cartes est simple et riche. Méthode pas à pas, exemple commenté et erreurs à éviter pour l’utiliser comme outil de réflexion.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/blog/tenir-un-journal-de-reves/",
+    "title": "Tenir un journal de rêves : méthode en 4 semaines | Luna",
+    "description": "Mieux se souvenir de ses rêves et repérer les thèmes qui reviennent : une méthode simple en quatre semaines pour tenir un journal de rêves.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/cgu/",
+    "title": "Conditions générales d’utilisation · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/cgv/",
+    "title": "Conditions générales de vente · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/comment-ca-marche/",
+    "title": "Comment ça marche : consulter un guide sur Luna",
+    "description": "Choisir un guide, échanger par chat, téléphone ou message, connaître le prix avant de commencer : le fonctionnement de Luna, étape par étape.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/compte/",
+    "title": "Mon compte",
+    "description": "Tableau de bord.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/abonnement/",
+    "title": "Abonnement Luna+",
+    "description": "Résiliation en trois clics.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/confidentialite/",
+    "title": "Confidentialité",
+    "description": "Consentements, export et suppression.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/conversations/",
+    "title": "Conversations",
+    "description": "Historique des échanges.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/factures/",
+    "title": "Factures",
+    "description": "Factures téléchargeables.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/favoris/",
+    "title": "Favoris",
+    "description": "Guides suivis et alertes.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/mes-donnees/",
+    "title": "Mes données",
+    "description": "Télécharger ou supprimer vos données.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/notifications/",
+    "title": "Notifications",
+    "description": "Alertes de service.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/paiement/",
+    "title": "Paiement",
+    "description": "Paiement simulé par carte de test.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/parametres/",
+    "title": "Paramètres",
+    "description": "Profil et coordonnées.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/parrainage/",
+    "title": "Mon parrainage",
+    "description": "Votre lien personnel.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/pause/",
+    "title": "Faire une pause",
+    "description": "Auto-exclusion.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/plafond/",
+    "title": "Plafond de dépense",
+    "description": "Limites quotidiennes et mensuelles.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/portefeuille/",
+    "title": "Portefeuille",
+    "description": "Solde et recharges.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/recharger/",
+    "title": "Recharger",
+    "description": "Choisir un pack de crédit.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/reservations/",
+    "title": "Réservations",
+    "description": "Créneaux de visio.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/compte/transactions/",
+    "title": "Transactions",
+    "description": "Historique du portefeuille.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/conditions-guides/",
+    "title": "Conditions des guides · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/confidentialite/",
+    "title": "Politique de confidentialité · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/connexion/",
+    "title": "Connexion",
+    "description": "Accéder à votre compte.",
+    "group": "account",
+    "indexable": true
+  },
+  {
+    "path": "/contact/",
+    "title": "Contact",
+    "description": "Écrire au service client de Luna.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/cookies/",
+    "title": "Politique cookies · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/desinscription/",
+    "title": "Désinscription",
+    "description": "Retirer un consentement de prospection en un clic.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/devenir-voyant/",
+    "title": "Devenir voyant ou guide sur Luna : candidature",
+    "description": "Tarologue, astrologue, numérologue : rejoignez Luna. Critères, charte de déontologie et étapes de candidature, sans promesse de revenus.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/devenir-voyant/candidature/",
+    "title": "Candidature guide",
+    "description": "Formulaire de candidature.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/espace-voyant/",
+    "title": "Espace guide",
+    "description": "Tableau de bord du guide.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/avis/",
+    "title": "Avis reçus",
+    "description": "Avis réels uniquement.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/consultations/",
+    "title": "Consultations",
+    "description": "Séances du guide, sans coordonnées client.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/disponibilites/",
+    "title": "Disponibilités",
+    "description": "Simulation de présence.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/planning/",
+    "title": "Planning",
+    "description": "Créneaux.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/profil/",
+    "title": "Profil guide",
+    "description": "Modifier la présentation.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/revenus/",
+    "title": "Revenus",
+    "description": "Relevés et commission.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/espace-voyant/tarifs/",
+    "title": "Tarifs du guide",
+    "description": "Tarifs indicatifs.",
+    "group": "voyant",
+    "indexable": false
+  },
+  {
+    "path": "/faq/",
+    "title": "FAQ Luna : paiement, confidentialité, guides IA",
+    "description": "Paiement, confidentialité, guides IA ou humains, majorité, réclamations, consultation raisonnée : toutes les réponses à vos questions sur Luna.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/guides/",
+    "title": "Guides",
+    "description": "Annuaire des guides fictifs, filtrable par pratique, thème et canal.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/",
+    "title": "Horoscope",
+    "description": "Les douze signes, comme repères symboliques.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/balance/",
+    "title": "Balance : dates, élément et traits du signe | Luna",
+    "description": "Le signe de la Balance (23 septembre au 22 octobre) : élément Air, planète maîtresse Vénus, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/belier/",
+    "title": "Bélier : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Bélier (21 mars au 19 avril) : élément Feu, planète maîtresse Mars, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/cancer/",
+    "title": "Cancer : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Cancer (21 juin au 22 juillet) : élément Eau, planète maîtresse la Lune, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/capricorne/",
+    "title": "Capricorne : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Capricorne (22 décembre au 19 janvier) : élément Terre, planète maîtresse Saturne, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/gemeaux/",
+    "title": "Gémeaux : dates, élément et traits du signe | Luna",
+    "description": "Le signe des Gémeaux (21 mai au 20 juin) : élément Air, planète maîtresse Mercure, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/lion/",
+    "title": "Lion : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Lion (23 juillet au 22 août) : élément Feu, planète maîtresse le Soleil, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/poissons/",
+    "title": "Poissons : dates, élément et traits du signe | Luna",
+    "description": "Le signe des Poissons (19 février au 20 mars) : élément Eau, planète Jupiter et Neptune, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/sagittaire/",
+    "title": "Sagittaire : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Sagittaire (22 novembre au 21 décembre) : élément Feu, planète maîtresse Jupiter, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/scorpion/",
+    "title": "Scorpion : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Scorpion (23 octobre au 21 novembre) : élément Eau, planète Mars et Pluton, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/taureau/",
+    "title": "Taureau : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Taureau (20 avril au 20 mai) : élément Terre, planète maîtresse Vénus, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/verseau/",
+    "title": "Verseau : dates, élément et traits du signe | Luna",
+    "description": "Le signe du Verseau (20 janvier au 18 février) : élément Air, planète Saturne et Uranus, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/horoscope/vierge/",
+    "title": "Vierge : dates, élément et traits du signe | Luna",
+    "description": "Le signe de la Vierge (23 août au 22 septembre) : élément Terre, planète maîtresse Mercure, traits et symbolique. Une présentation intemporelle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/inscription/",
+    "title": "Inscription",
+    "description": "Créer un compte Luna, réservé aux majeurs.",
+    "group": "account",
+    "indexable": true
+  },
+  {
+    "path": "/legal/archives/",
+    "title": "Archives des textes juridiques",
+    "description": "Versions publiées des CGU, CGV et politiques.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/mentions-legales/",
+    "title": "Mentions légales · Luna",
+    "description": "Texte juridique de travail, à faire valider par un avocat. Les [CROCHETS] restent à compléter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/mot-de-passe-oublie/",
+    "title": "Mot de passe oublié",
+    "description": "Recevoir un lien de réinitialisation simulé.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/offre-bienvenue/",
+    "title": "Offre de bienvenue Luna : votre premier échange",
+    "description": "Découvrez Luna avec une offre de bienvenue pour votre premier échange. Conditions claires, sans engagement caché. Réservé aux nouveaux comptes majeurs.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/parrainage/",
+    "title": "Parrainage Luna : recommander Luna à un proche",
+    "description": "Vous appréciez Luna ? Recommandez-la à un proche majeur. Fonctionnement du parrainage, avantages et règles, expliqués simplement.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/plan-du-site/",
+    "title": "Plan du site",
+    "description": "Toutes les pages du prototype.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/preferences-cookies/",
+    "title": "Préférences cookies",
+    "description": "Choisir les cookies, ou les refuser.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/reinitialiser-mot-de-passe/",
+    "title": "Nouveau mot de passe",
+    "description": "Choisir un nouveau mot de passe.",
+    "group": "account",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/aicha-diallo/",
+    "title": "Réserver avec Aïcha Diallo",
+    "description": "Créneau de visio simulé avec Aïcha Diallo.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/claire/",
+    "title": "Réserver avec Claire",
+    "description": "Créneau de visio simulé avec Claire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/hugo-lemaire/",
+    "title": "Réserver avec Hugo Lemaire",
+    "description": "Créneau de visio simulé avec Hugo Lemaire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/ines-benali/",
+    "title": "Réserver avec Inès Benali",
+    "description": "Créneau de visio simulé avec Inès Benali.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/lucie-moreau/",
+    "title": "Réserver avec Lucie Moreau",
+    "description": "Créneau de visio simulé avec Lucie Moreau.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/marc/",
+    "title": "Réserver avec Marc",
+    "description": "Créneau de visio simulé avec Marc.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/nadia-kovac/",
+    "title": "Réserver avec Nadia Kovač",
+    "description": "Créneau de visio simulé avec Nadia Kovač.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/selene/",
+    "title": "Réserver avec Séléné",
+    "description": "Créneau de visio simulé avec Séléné.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/sofia-marin/",
+    "title": "Réserver avec Sofia Marin",
+    "description": "Créneau de visio simulé avec Sofia Marin.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/theo-garnier/",
+    "title": "Réserver avec Théo Garnier",
+    "description": "Créneau de visio simulé avec Théo Garnier.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/vega/",
+    "title": "Réserver avec Véga",
+    "description": "Créneau de visio simulé avec Véga.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/reserver/yann-le-goff/",
+    "title": "Réserver avec Yann Le Goff",
+    "description": "Créneau de visio simulé avec Yann Le Goff.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/aicha-diallo/",
+    "title": "Appel avec Aïcha Diallo",
+    "description": "Appel simulé via Twilio avec Aïcha Diallo.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/claire/",
+    "title": "Appel avec Claire",
+    "description": "Appel simulé via Twilio avec Claire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/hugo-lemaire/",
+    "title": "Appel avec Hugo Lemaire",
+    "description": "Appel simulé via Twilio avec Hugo Lemaire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/ines-benali/",
+    "title": "Appel avec Inès Benali",
+    "description": "Appel simulé via Twilio avec Inès Benali.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/lucie-moreau/",
+    "title": "Appel avec Lucie Moreau",
+    "description": "Appel simulé via Twilio avec Lucie Moreau.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/marc/",
+    "title": "Appel avec Marc",
+    "description": "Appel simulé via Twilio avec Marc.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/nadia-kovac/",
+    "title": "Appel avec Nadia Kovač",
+    "description": "Appel simulé via Twilio avec Nadia Kovač.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/selene/",
+    "title": "Appel avec Séléné",
+    "description": "Appel simulé via Twilio avec Séléné.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/sofia-marin/",
+    "title": "Appel avec Sofia Marin",
+    "description": "Appel simulé via Twilio avec Sofia Marin.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/theo-garnier/",
+    "title": "Appel avec Théo Garnier",
+    "description": "Appel simulé via Twilio avec Théo Garnier.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/vega/",
+    "title": "Appel avec Véga",
+    "description": "Appel simulé via Twilio avec Véga.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/appel/yann-le-goff/",
+    "title": "Appel avec Yann Le Goff",
+    "description": "Appel simulé via Twilio avec Yann Le Goff.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/test/",
+    "title": "Essai caméra et micro",
+    "description": "Tester le matériel avant une visio.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/aicha-diallo/",
+    "title": "Visio avec Aïcha Diallo",
+    "description": "Salle Daily simulée avec Aïcha Diallo.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/claire/",
+    "title": "Visio avec Claire",
+    "description": "Salle Daily simulée avec Claire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/hugo-lemaire/",
+    "title": "Visio avec Hugo Lemaire",
+    "description": "Salle Daily simulée avec Hugo Lemaire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/ines-benali/",
+    "title": "Visio avec Inès Benali",
+    "description": "Salle Daily simulée avec Inès Benali.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/lucie-moreau/",
+    "title": "Visio avec Lucie Moreau",
+    "description": "Salle Daily simulée avec Lucie Moreau.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/marc/",
+    "title": "Visio avec Marc",
+    "description": "Salle Daily simulée avec Marc.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/nadia-kovac/",
+    "title": "Visio avec Nadia Kovač",
+    "description": "Salle Daily simulée avec Nadia Kovač.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/selene/",
+    "title": "Visio avec Séléné",
+    "description": "Salle Daily simulée avec Séléné.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/sofia-marin/",
+    "title": "Visio avec Sofia Marin",
+    "description": "Salle Daily simulée avec Sofia Marin.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/theo-garnier/",
+    "title": "Visio avec Théo Garnier",
+    "description": "Salle Daily simulée avec Théo Garnier.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/vega/",
+    "title": "Visio avec Véga",
+    "description": "Salle Daily simulée avec Véga.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/session/video/yann-le-goff/",
+    "title": "Visio avec Yann Le Goff",
+    "description": "Salle Daily simulée avec Yann Le Goff.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/sous-traitants/",
+    "title": "Sous-traitants",
+    "description": "Destinataires et pays de traitement.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/",
+    "title": "Spécialités",
+    "description": "Les pratiques proposées sur Luna.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/astrologie/",
+    "title": "Astrologie : thème natal et cycles | Luna",
+    "description": "Thème natal, signes, planètes, maisons : l’astrologie comme langage symbolique pour mieux vous comprendre. Consultations avec des guides Luna.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/cartomancie/",
+    "title": "Cartomancie : jeu de 32 cartes et Lenormand | Luna",
+    "description": "La cartomancie utilise des jeux traditionnels, comme le jeu de 32 cartes ou les cartes Lenormand, pour éclairer vos questions du quotidien.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/mediumnite/",
+    "title": "Médiumnité : une pratique présentée avec prudence | Luna",
+    "description": "Ce qu’est la médiumnité, ce que Luna propose et ce qu’elle ne prétend pas faire. Une approche prudente, sans promesse, attentive au deuil.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/numerologie/",
+    "title": "Numérologie : chemin de vie et nombres | Luna",
+    "description": "La numérologie explore la symbolique des nombres de votre date de naissance et de votre prénom. Principes, calculs et limites, expliqués simplement.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/oracle/",
+    "title": "Cartes oracle : un message à interpréter | Luna",
+    "description": "Les cartes oracle proposent des images et des mots pour ouvrir une réflexion personnelle. Ce qu’elles sont, comment elles se lisent, avec qui consulter.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/pendule/",
+    "title": "Pendule : une pratique d’écoute | Luna",
+    "description": "Le pendule utilisé comme outil de clarification : principe, usage en consultation et limites. Sans prise de décision à votre place.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/reves/",
+    "title": "Interprétation des rêves : explorer vos rêves | Luna",
+    "description": "Lire vos rêves comme un récit personnel : symboles, émotions, échos du quotidien. Méthode, journal de rêves et limites de l’interprétation.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/runes/",
+    "title": "Runes : lecture et symbolique | Luna",
+    "description": "Les runes, alphabet ancien des peuples germaniques, utilisées comme support de réflexion. Histoire, principe de lecture et limites de la pratique.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/specialites/tarot/",
+    "title": "Tarot en ligne : tirages commentés par chat | Luna",
+    "description": "Le tarot comme support de réflexion : arcanes, tirages, déroulement d’une consultation sur Luna, avec un guide IA ou un guide humain.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/tarifs/",
+    "title": "Tarifs et recharges",
+    "description": "Packs de crédit et tarif de démonstration.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/",
+    "title": "Thèmes",
+    "description": "Questions d’amour, de travail, de famille et d’avenir.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/amour/",
+    "title": "Guidance amour : y voir clair dans vos sentiments | Luna",
+    "description": "Une rencontre, un doute, une rupture : la guidance amoureuse vous aide à clarifier ce que vous ressentez. Sans promesse, avec des guides attentifs.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/argent/",
+    "title": "Guidance et argent : votre rapport à l’argent | Luna",
+    "description": "Réfléchir à votre rapport à l’argent, à vos priorités et à vos peurs. Aucun conseil financier : pour vos décisions, adressez-vous à un professionnel.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/avenir/",
+    "title": "Guidance et avenir : préparer ce qui vient | Luna",
+    "description": "Personne ne connaît l’avenir. Une consultation peut vous aider à clarifier vos envies, vos craintes et vos prochains pas. Sans prédiction.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/couple/",
+    "title": "Guidance couple : réfléchir à deux, ou pour soi | Luna",
+    "description": "Communication, projets communs, crise ou routine : une consultation pour prendre du recul sur votre couple. Des guides qui ne tranchent pas à votre place.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/famille/",
+    "title": "Guidance famille : comprendre vos liens | Luna",
+    "description": "Parents, enfants, fratrie : une consultation pour réfléchir à vos liens familiaux et à votre place. Avec des relais vers des professionnels si besoin.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/themes/travail/",
+    "title": "Guidance travail : vos questions professionnelles | Luna",
+    "description": "Envie de changement, doute, fatigue : une consultation pour réfléchir à votre vie professionnelle. Pour décider, des professionnels vous accompagnent.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/transparence/",
+    "title": "Transparence",
+    "description": "Nature du service et transparence sur l’intelligence artificielle.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/",
+    "title": "Guides",
+    "description": "Annuaire des guides fictifs de démonstration, humains et IA.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/aicha-diallo/",
+    "title": "Aïcha Diallo, écoute intuitive et médiumnité | Luna",
+    "description": "Aïcha Diallo propose une écoute intuitive, présentée avec prudence et sans promesse. Échanges par téléphone ou message. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/aicha-diallo/consulter/",
+    "title": "Consulter Aïcha Diallo",
+    "description": "Séance de démonstration avec Aïcha Diallo.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/claire/",
+    "title": "Claire, guide relations : amour et liens | Luna",
+    "description": "Claire vous aide à y voir clair dans vos relations amoureuses, familiales ou amicales, par message écrit ou par chat. Profil de démonstration.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/claire/consulter/",
+    "title": "Consulter Claire",
+    "description": "Séance de démonstration avec Claire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/hugo-lemaire/",
+    "title": "Hugo Lemaire, tarologue : tarot de Marseille | Luna",
+    "description": "Hugo Lemaire lit le tarot de Marseille avec rigueur et simplicité, par téléphone ou par chat. Un regard posé sur vos questions. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/hugo-lemaire/consulter/",
+    "title": "Consulter Hugo Lemaire",
+    "description": "Séance de démonstration avec Hugo Lemaire.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/ines-benali/",
+    "title": "Inès Benali, numérologue : chemin de vie | Luna",
+    "description": "Inès Benali explore la symbolique des nombres de votre date de naissance et de votre prénom. Lecture par chat ou message. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/ines-benali/consulter/",
+    "title": "Consulter Inès Benali",
+    "description": "Séance de démonstration avec Inès Benali.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/lucie-moreau/",
+    "title": "Lucie Moreau, oracle et pendule | Luna",
+    "description": "Lucie Moreau utilise cartes oracle et pendule comme supports d’écoute, pour clarifier une question. Par chat ou message écrit. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/lucie-moreau/consulter/",
+    "title": "Consulter Lucie Moreau",
+    "description": "Séance de démonstration avec Lucie Moreau.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/marc/",
+    "title": "Marc, astrologue : thème natal et cycles | Luna",
+    "description": "Marc lit votre thème astral et les cycles en cours, par téléphone ou par message. Un regard posé sur les grandes étapes. Profil de démonstration.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/marc/consulter/",
+    "title": "Consulter Marc",
+    "description": "Séance de démonstration avec Marc.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/nadia-kovac/",
+    "title": "Nadia Kovač, cartomancienne : jeu de 32 cartes | Luna",
+    "description": "Nadia Kovač pratique la cartomancie traditionnelle et les cartes Lenormand, par téléphone ou par chat. Lectures précises et sobres. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/nadia-kovac/consulter/",
+    "title": "Consulter Nadia Kovač",
+    "description": "Séance de démonstration avec Nadia Kovač.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/selene/",
+    "title": "Séléné, guide IA de tarot : chat 24 h/24 | Luna",
+    "description": "Séléné est un guide IA de Luna : tirages de tarot commentés par chat, à toute heure. Réponses générées automatiquement, clairement signalées.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/selene/consulter/",
+    "title": "Consulter Séléné",
+    "description": "Séance de démonstration avec Séléné.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/sofia-marin/",
+    "title": "Sofia Marin, guidance travail et transitions | Luna",
+    "description": "Sofia Marin utilise tarot et numérologie pour vous aider à réfléchir à vos envies et transitions professionnelles. Par chat ou téléphone. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/sofia-marin/consulter/",
+    "title": "Consulter Sofia Marin",
+    "description": "Séance de démonstration avec Sofia Marin.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/theo-garnier/",
+    "title": "Théo Garnier, interprétation des rêves | Luna",
+    "description": "Théo Garnier vous aide à explorer vos rêves comme un récit personnel : symboles, émotions, échos du quotidien. Par message ou chat. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/theo-garnier/consulter/",
+    "title": "Consulter Théo Garnier",
+    "description": "Séance de démonstration avec Théo Garnier.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/vega/",
+    "title": "Véga, guide IA d’astrologie et de numérologie | Luna",
+    "description": "Véga est un guide IA de Luna : explications d’astrologie et de numérologie par chat, à toute heure. Réponses générées automatiquement et signalées.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/vega/consulter/",
+    "title": "Consulter Véga",
+    "description": "Séance de démonstration avec Véga.",
+    "group": "session",
+    "indexable": false
+  },
+  {
+    "path": "/voyants/yann-le-goff/",
+    "title": "Yann Le Goff, lecture des runes | Luna",
+    "description": "Yann Le Goff lit les runes comme un alphabet symbolique pour éclairer vos questions, par téléphone ou par message écrit. Profil fictif.",
+    "group": "public",
+    "indexable": true
+  },
+  {
+    "path": "/voyants/yann-le-goff/consulter/",
+    "title": "Consulter Yann Le Goff",
+    "description": "Séance de démonstration avec Yann Le Goff.",
+    "group": "session",
+    "indexable": false
+  }
+]

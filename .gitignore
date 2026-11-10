@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+server/.env
+*.log
+playwright-report/
+test-results/
+blob-report/
+.DS_Store
+coverage/
+*.tsbuildinfo
+.prisma/

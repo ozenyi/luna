@@ -1,0 +1,19 @@
+# Termes de détresse — signal booléen et catégorie uniquement, jamais de copie du texte.
+# Catégories : suicide, self_harm, violence
+suicide:
+  - me suicider
+  - idées suicidaires
+  - je veux mourir
+  - envie de mourir
+  - mettre fin à mes jours
+  - plus envie de vivre
+  - en finir avec la vie
+self_harm:
+  - me faire du mal
+  - scarification
+  - overdose
+violence:
+  - il me bat
+  - elle me bat
+  - violences
+  - me frappe

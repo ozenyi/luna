@@ -1,0 +1,13 @@
+{
+  "name": "luna",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --prefix app",
+    "test": "npm test --prefix server",
+    "test:e2e": "playwright test",
+    "typecheck": "npm run typecheck --prefix app && npm run typecheck --prefix server"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

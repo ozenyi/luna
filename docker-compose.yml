@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: luna
+      POSTGRES_PASSWORD: luna
+      POSTGRES_DB: luna
+    ports:
+      - "5432:5432"
+    volumes:
+      - luna_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U luna -d luna"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  api:
+    build: ./server
+    environment:
+      DATABASE_URL: postgresql://luna:luna@db:5432/luna?schema=public
+      PORT: 8787
+      WEB_ORIGIN: http://localhost:5173
+      SESSION_SECRET: dev-only-change-me-please-32
+      DEMO_EXPOSE_OTP: "true"
+      LUNA_ADMIN_EMAIL: admin@luna.test
+      LUNA_ADMIN_PASSWORD: Luna-demo-2026
+      LUNA_VOYANT_EMAIL: voyant@luna.test
+      LUNA_VOYANT_PASSWORD: Luna-demo-2026
+      LUNA_CLIENT_EMAIL: client@luna.test
+      LUNA_CLIENT_PASSWORD: Luna-demo-2026
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8787:8787"
+volumes:
+  luna_pg: {}
